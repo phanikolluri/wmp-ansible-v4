@@ -1,0 +1,19 @@
+- name: Create a appuser
+  ansible.builtin.user:
+    name: appuser
+    system: yes
+    shell: /bin/false
+
+- name: Delete /app directory if exists
+  ansible.builtin.file:
+    path: /app
+    state: absent
+
+- name: extract the application source code directly to the application directory.
+  ansible.builtin.unarchive:
+    src: https://raw.githubusercontent.com/raghudevopsb88/wealth-project/main/artifacts/{{ COMPONENT }}.tar.gz
+    dest: /app
+    remote_src: yes
+
+
+

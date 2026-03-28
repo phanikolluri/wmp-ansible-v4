@@ -1,0 +1,19 @@
+- name: Create a app directory
+  ansible.builtin.file:
+    path: /app
+    owner: appuser
+    group: appuser
+    recurse: yes
+    mode: 'o-rwx'
+
+- name: Copy auth configuration file
+  ansible.builtin.copy:
+    src: {{ COMPONENT }}.service
+    dest: /etc/systemd/system/{{ COMPONENT }}.service
+
+- name: Start service auth-service
+  ansible.builtin.service:
+    name: {{ COMPONENT }}
+    daemon_reload: yes
+    enabled: yes
+    state: restarted

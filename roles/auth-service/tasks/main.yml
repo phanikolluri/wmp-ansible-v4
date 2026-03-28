@@ -1,0 +1,20 @@
+    - name: install golang
+      ansible.builtin.dnf:
+        name: golang
+        state: present
+
+    - name: install pre-requisites
+      ansible.builtin.include_role:
+        name: common
+        tasks_from: configurations
+
+    - name: Build the go binary
+      ansible.builtin.shell: CGO_ENABLED=0 go build -o auth-service ./cmd/server
+      args:
+        chdir: /app
+
+    - name: install pre-requisites
+      ansible.builtin.include_role:
+        name: common
+        tasks_from: systemd
+

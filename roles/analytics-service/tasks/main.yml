@@ -1,0 +1,31 @@
+    - name: install Python modules
+      ansible.builtin.dnf:
+        name:
+          - python3.12
+          - python3.12-pip
+          - python3.12-devel
+          - gcc
+        state: present
+
+    - name: install pre-requisites
+      ansible.builtin.include_role:
+        name: common
+        tasks_from: configurations
+
+    - name: install python dependencies
+      ansible.builtin.shell: pip3.12 install --no-cache-dir .
+      args:
+        chdir: /app
+
+    - name: install pre-requisites
+      ansible.builtin.include_role:
+        name: common
+        tasks_from: systemd
+
+
+
+
+
+
+
+

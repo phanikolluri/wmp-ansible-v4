@@ -1,0 +1,43 @@
+  - name: Install nodejs repo download
+    ansible.builtin.shell: curl -fsSL https://rpm.nodesource.com/setup_22.x | bash -
+
+  - name: install nginx
+    ansible.builtin.dnf:
+      name:
+        - '@nginx:1.26'
+        - nodejs
+      state: present
+
+  - name: Copy nginx configuration file
+    ansible.builtin.copy:
+      src: nginx.conf
+      dest: /etc/nginx/nginx.conf
+
+  - name: Delete directory
+    ansible.builtin.file:
+      path: /usr/share/nginx/html
+      state: absent
+
+  - name: Unarchive a file that needs to be downloaded
+    ansible.builtin.unarchive:
+      src: https://raw.githubusercontent.com/raghudevopsb88/wealth-project/main/artifacts/frontend.tar.gz
+      dest: /usr/share/nginx
+      remote_src: yes
+
+  - name: install dependencies and build
+    ansible.builtin.shell: npm ci ; npm run build ; mv dist html
+    args:
+      chdir: /usr/share/nginx/
+
+  - name: Start service nginx
+    ansible.builtin.systemd_service:
+      name: nginx
+      enabled: yes
+      state: restarted
+
+
+
+
+
+
+
