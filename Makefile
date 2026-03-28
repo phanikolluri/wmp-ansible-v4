@@ -6,7 +6,7 @@ database: postgresql
 
 apps: frontend portfolio-service auth-service analytics-service
 
-all: frontend postgresql portfolio-service auth-service analytics-service
+all: frontend postgresql  auth-service portfolio-service analytics-service
 
 frontend:
 	ansible-playbook -i frontend-dev.mydevops88.online, -e ansible_user=ec2-user -e ansible_password=DevOps321  -e COMPONENT=frontend main.yml -e env=dev
