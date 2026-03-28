@@ -1,11 +1,3 @@
-- name: Create a app directory
-  ansible.builtin.file:
-    path: /app
-    owner: appuser
-    group: appuser
-    recurse: yes
-    mode: 'o-rwx'
-
 - name: Copy auth configuration file
   ansible.builtin.template:
     src: {{ COMPONENT }}.service

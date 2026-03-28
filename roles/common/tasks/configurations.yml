@@ -9,6 +9,14 @@
     path: /app
     state: absent
 
+- name: Create a app directory
+  ansible.builtin.file:
+    path: /app
+    owner: appuser
+    group: appuser
+    recurse: yes
+    mode: 'o-rwx'
+
 - name: extract the application source code directly to the application directory.
   ansible.builtin.unarchive:
     src: https://raw.githubusercontent.com/raghudevopsb88/wealth-project/main/artifacts/{{ COMPONENT }}.tar.gz
