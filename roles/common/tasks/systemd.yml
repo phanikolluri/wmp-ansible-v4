@@ -5,7 +5,7 @@
 
 - name: Start service auth-service
   ansible.builtin.service:
-    name: {{ COMPONENT }}
+    name: "{{ COMPONENT }}"
     daemon_reload: yes
     enabled: yes
     state: restarted
