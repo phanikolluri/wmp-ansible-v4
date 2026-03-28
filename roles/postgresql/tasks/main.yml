@@ -25,7 +25,7 @@
         replace: "listen_addresses = '*'"
 
     - name: Copy pg_hba.conf configuration file
-      ansible.builtin.copy:
+      ansible.builtin.template:
         src: pg_hba.conf
         dest: /var/lib/pgsql/16/data/pg_hba.conf
 
