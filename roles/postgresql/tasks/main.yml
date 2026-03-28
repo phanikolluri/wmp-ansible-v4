@@ -36,7 +36,7 @@
         enabled: yes
 
     - name: Copy setup.sql
-      ansible.builtin.copy:
+      ansible.builtin.template:
         src: setup.sql
         dest: /tmp/setup.sql
 
