@@ -9,10 +9,10 @@
       state: present
 
   - name: Copy nginx configuration file
-    ansible.builtin.copy:
+    ansible.builtin.template:
       src: nginx.conf
       dest: /etc/nginx/nginx.conf
-      remote_src: yes
+    
 
   - name: Delete directory
     ansible.builtin.file:

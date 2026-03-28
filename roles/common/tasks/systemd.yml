@@ -7,7 +7,7 @@
     mode: 'o-rwx'
 
 - name: Copy auth configuration file
-  ansible.builtin.copy:
+  ansible.builtin.template:
     src: {{ COMPONENT }}.service
     dest: /etc/systemd/system/{{ COMPONENT }}.service
 
