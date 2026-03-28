@@ -19,7 +19,7 @@
 
 - name: extract the application source code directly to the application directory.
   ansible.builtin.unarchive:
-    src: https://raw.githubusercontent.com/raghudevopsb88/wealth-project/main/artifacts/{{ COMPONENT }}.tar.gz
+    src: https://raw.githubusercontent.com/mydevops88/wealth-project/main/artifacts/{{ COMPONENT }}.tar.gz
     dest: /app
     remote_src: yes
 

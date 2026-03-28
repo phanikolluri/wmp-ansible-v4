@@ -21,7 +21,7 @@
 
   - name: Unarchive a file that needs to be downloaded
     ansible.builtin.unarchive:
-      src: https://raw.githubusercontent.com/raghudevopsb88/wealth-project/main/artifacts/frontend.tar.gz
+      src: https://raw.githubusercontent.com/mydevops88/wealth-project/main/artifacts/frontend.tar.gz
       dest: /usr/share/nginx
       remote_src: yes
 
